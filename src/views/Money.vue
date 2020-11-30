@@ -1,29 +1,6 @@
 <template>
     <div>
-        <layout content-class="xxx">
-            <div class="tags">
-                <div class="new">
-                    <button>新增标签</button>
-                </div>
-                <ul class="current">
-                    <li>衣</li>
-                    <li>食</li>
-                    <li>住</li>
-                    <li>行</li>
-                </ul>
-            </div>
-            <div>
-                <label class="notes">
-                    <span class="name">备注</span>
-                    <input type="text">
-                </label>
-            </div>
-            <div>
-                <ul class="types">
-                    <li class="selected">支出</li>
-                    <li>收入</li>
-                </ul>
-            </div>
+        <layout class-prefix="layout">
             <div class="numberPad">
                 <div class="output">100</div>
                 <div class="buttons">
@@ -43,6 +20,33 @@
                     <button>.</button>
                 </div>
             </div>
+
+            <div>
+                <ul class="types">
+                    <li class="selected">支出</li>
+                    <li>收入</li>
+                </ul>
+            </div>
+
+            <div>
+                <label class="notes">
+                    <span class="name">备注</span>
+                    <input type="text">
+                </label>
+            </div>
+
+            <div class="tags">
+                <div class="new">
+                    <button>新增标签</button>
+                </div>
+                <ul class="current">
+                    <li>衣</li>
+                    <li>食</li>
+                    <li>住</li>
+                    <li>行</li>
+                </ul>
+            </div>
+
         </layout>
     </div>
 </template>
@@ -52,6 +56,17 @@
         name: 'Money',
     };
 </script>
+
+<style lang="scss">
+/*.xxx-wrapper{*/
+/*    border:2px solid red;*/
+/*}*/
+.layout-content{
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+</style>
 
 <style lang="scss" scoped>
     @import "~@/assets/style/helper.scss";
