@@ -7,28 +7,50 @@
     </div>
 </template>
 
-<script lang="js">
-    export default {
-        name: 'Types',
-        //外部属性，内部属性，生命周期和方法
-        props:['xxx'],
-        data(){
-            return{
-              type:'-' //'-'表示支出，'+'表示收入
-            }
-        },
-        mounted(){
-            console.log(this.xxx)
-        },
-        methods:{
-            selectType(type){ //type只能时'-''+'中的一个
-                if(type !== '-' && type!== '+'){
-                    throw new Error('type is unkown')
-                }
-                this.type= type
-            }
-        }
-    };
+<script lang="ts">
+  import Vue from 'vue';
+  import {Component, Prop} from 'vue-property-decorator';
+
+  @Component //type被自动处理为data,selectType为methods
+  export default class Types extends Vue{
+    type = '-';     //'-'表示支出，'+'表示收入
+
+      @Prop(Number) xxx: number | undefined;
+      //Prop   告诉Vue xxx不是data，是prop
+      //Number 告诉Vue xxx是个number    运行时
+      //xxx是属性名
+      //number | undefined就是xxx的类型 编译时
+
+      selectType(type: string){    //type只能时'-''+'中的一个。只有这行为ts
+          if(type !== '-' && type!== '+'){
+              throw new Error('type is unknown')
+          }
+          this.type= type
+      }
+  }
+
+    // lang="js"
+    // export default {
+    //     name: 'Types',
+    //     //外部属性，内部属性，生命周期，方法
+    //     props:['xxx'],
+    //     data(){
+    //         return{
+    //           type:'-' //'-'表示支出，'+'表示收入
+    //         }
+    //     },
+    //     mounted(){
+    //         console.log(this.xxx)
+    //     },
+    //     methods:{
+    //         selectType(type){ //type只能时'-''+'中的一个
+    //             if(type !== '-' && type!== '+'){
+    //                 throw new Error('type is unkown')
+    //             }
+    //             this.type= type
+    //         }
+    //     }
+    // };
 </script>
 
 <style lang="scss" scoped>
