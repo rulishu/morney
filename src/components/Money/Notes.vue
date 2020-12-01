@@ -15,7 +15,7 @@
   import {Component} from 'vue-property-decorator';
 
   @Component
-  export default class NumberPad extends Vue {
+  export default class Notes extends Vue {
     value = '';
     // onInput(event: KeyboardEvent){
     //     const input = event.target as HTMLInputElement;
