@@ -3,7 +3,7 @@
         <div>当前页面不存在请检查网址是个否存在</div>
         <div>
             <router-link to="/">返回首页</router-link>
-        </div>>
+        </div>
     </div>
 </template>
 
