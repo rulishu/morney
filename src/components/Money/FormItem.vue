@@ -16,9 +16,10 @@
 
   @Component
   export default class FormItem extends Vue {
-      value = '';
+      @Prop({default:''}) value!: string;
+
       @Prop({required:true}) fieldName!: string
-      @Prop() placeholder!: string
+      @Prop() placeholder?: string
 
       @Watch('value')
       onChildChanged(value: string) {
