@@ -43,6 +43,7 @@
 <style lang="scss" scoped>
     @import "~@/assets/style/helper.scss";
     .tags {
+        background: white;
         font-size: 14px;
         padding: 16px;
         flex-grow: 1;
@@ -52,7 +53,8 @@
             display: flex;
             flex-wrap: wrap;
             > li {
-                background: #d9d9d9;
+                $bg: #d9d9d9;
+                background: $bg;
                 $h: 24px;
                 height: $h;
                 line-height: $h;
@@ -61,7 +63,8 @@
                 margin-right: 12px;
                 margin-top: 4px;
                 &.selected{
-                    background: #999999;
+                    background: darken($bg, 50%);
+                    color: white;
                 }
             }
         }
