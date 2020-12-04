@@ -28,7 +28,7 @@
         createTag(){
             const name = window.prompt('请输出标签名')
             if(name){
-                window.createTag() //写的时候在tagListModel上写,封装在main.ts里
+                window.createTag(name) //写的时候在tagListModel上写,封装在main.ts里
             }
         }
     }
