@@ -25,10 +25,6 @@
       onChildChanged(value: string) {
           this.$emit('update:value',value)
       }
-    // onInput(event: KeyboardEvent){
-    //     const input = event.target as HTMLInputElement;
-    //     this.value =input.value;
-    // }
   }
 </script>
 
