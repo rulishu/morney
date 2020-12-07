@@ -21,7 +21,6 @@
     import {Component} from 'vue-property-decorator';
     import FormItem from '@/components/Money/FormItem.vue';
     import Button from '@/components/Button.vue';
-    import store from '@/store/index2';
 
     @Component({
         components: {Button, FormItem}
@@ -30,23 +29,27 @@
         tag?: Tag = undefined;
 
         created(){
-            this.tag = store.findTag(this.$route.params.id);
+            //TODO
+            // this.tag = store.findTag(this.$route.params.id);
             if(!this.tag){
                 this.$router.replace('/404') //不用 push用replace
             }
         }
         update(name: string){
             if(this.tag){
-                store.updateTag(this.tag.id, name)
+                //TODO
+                // store.updateTag(this.tag.id, name)
             }
         }
         remove(){
             if(this.tag){
-                if(store.removeTag(this.tag.id)){
-                    this.$router.back()
-                }else {
-                    window.alert('删除失败')
-                }
+                //TODO
+                return
+                // if(store.removeTag(this.tag.id)){
+                //     this.$router.back()
+                // }else {
+                //     window.alert('删除失败')
+                // }
             }
         }
         goBack(){
