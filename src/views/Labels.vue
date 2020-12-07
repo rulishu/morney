@@ -17,21 +17,21 @@
     import {Component} from 'vue-property-decorator';
     import tagListModel from '@/models/tagListModel';
     import Button from '@/components/Button.vue';
+    import { mixins } from 'vue-class-component';
+    import TagHelper from '@/mixins/TagHelper'
 
     tagListModel.fetch()
     @Component({
-        components: {Button}
-    })
-    export default class Labels extends Vue{
-        //TODO
-        tags = [] //store.tagList; //读的时候去window上读
-
-        createTag(){
-            const name = window.prompt('请输出标签名')
-            if(name){
-                //TODO
-                // store.createTag(name) //写的时候在tagListModel上写,封装在main.ts里
+        components: {Button},
+        computed:{
+            tags(){
+                return this.$store.state.tagList
             }
+    }
+    })
+    export default class Labels extends mixins(TagHelper){
+        beforeCreate(){
+            this.$store.commit('fetchTags')
         }
     }
 </script>

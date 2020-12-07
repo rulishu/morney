@@ -33,11 +33,11 @@ const store = new Vuex.Store({
         window.alert('标签名重复了')
         return 'duplicated';
     }
-    const id = createId().toString();
-    state.tagList.push({id, name: name});
-    store.commit('saveTags')
-    window.alert('添加成功');
-    return 'success';
+      const id = createId().toString();
+      state.tagList.push({id, name: name});
+      store.commit('saveTags')
+      window.alert('添加成功');
+      return 'success';
     },
     saveTags(state) {
       window.localStorage.setItem('tagList', JSON.stringify(state.tagList));
