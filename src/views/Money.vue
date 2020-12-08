@@ -22,9 +22,10 @@
     import Tags from '@/components/Money/Tags.vue';
     import {Component} from 'vue-property-decorator';
     import recordTypeList from '@/constants/recordTypeList'
+    import Tabs from '@/components/Tabs.vue'
 
     @Component({
-        components: {Tags, FormItem, NumberPad},
+        components: {Tags, FormItem,Tabs,NumberPad},
     })
     export default class Money extends Vue{
         get recordList(){
