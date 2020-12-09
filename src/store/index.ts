@@ -9,6 +9,7 @@ Vue.use(Vuex) //把 store 绑到 Vue.prototype
 const store = new Vuex.Store({
   state: {                               //data
     recordList:[] as RecordItem[],
+    createRecordError: null,
     tagList:[] as Tag[],
     currentTag: undefined
   } as RootState,
@@ -47,6 +48,7 @@ const store = new Vuex.Store({
           window.alert('删除失败')
         }
     },
+
     fetchRecords(state){
       state.recordList = JSON.parse(window.localStorage.getItem('recordList') || '[]') as RecordItem[];
     },
@@ -54,15 +56,21 @@ const store = new Vuex.Store({
       const record2: RecordItem= clone(record);
       record2.createdAt = new Date().toISOString();
       state.recordList.push(record2);
-      store.commit('saveRecord')
+      store.commit('saveRecord');
     },
     saveRecord(state){
       window.localStorage.setItem('recordList',JSON.stringify(state.recordList))
     },
 
     fetchTags(state){
-    return state.tagList = JSON.parse(window.localStorage.getItem('tagList') || '[]');
-    },
+    state.tagList = JSON.parse(window.localStorage.getItem('tagList') || '[]');
+    if(!state.tagList || state.tagList.length===0){
+        store.commit('createTag','餐饮');
+        store.commit('createTag','住宿');
+        store.commit('createTag','交通');
+        store.commit('createTag','娱乐');
+    }
+  },
     createTag(state,name: string){
     const names = state.tagList.map(item => item.name);
     if (names.indexOf(name) >= 0) {
